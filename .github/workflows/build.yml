@@ -81,7 +81,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           repository: awawa-dev/HyperHDR
-          ref: v22.0.0.0beta1
+          ref: v22.0.0.0beta2
           path: hyperhdr-repo
           submodules: recursive
           fetch-depth: 0
@@ -156,7 +156,7 @@ jobs:
 
       - name: Copy dependencies to release/
         env:
-          dependency_libs: libQt6Core.so.6 libQt6Network.so.6 libQt6SerialPort.so.6 libatomic.so.1 libcom_err.so.3 libcom_err.so.3 libcrypto.so.1.1 libcrypto.so.3 libftdi1.so.2 libgssapi_krb5.so.2 libjpeg.so.8 libk5crypto.so.3 libkrb5.so.3 libkrb5support.so.0 libpng16.so.16 libpcre2-16.so.0 libssl.so.1.1 libssl.so.3 libstdc++.so.6 libturbojpeg.so.0 libudev.so.1 libusb-1.0.so.0 libz.so.1 libdouble-conversion.so.3
+          dependency_libs: libQt6Core.so.6 libQt6Network.so.6 libQt6SerialPort.so.6 libatomic.so.1 libcrypto.so.3 libftdi1.so.2 libjpeg.so.8 libpng16.so.16 libpcre2-16.so.0 libssl.so.1.1 libssl.so.3 libstdc++.so.6 libturbojpeg.so.0 libudev.so.1 libusb-1.0.so.0 libz.so.1 libdouble-conversion.so.3 libb2.so.1
         run: |
           for i in ${{ env.dependency_libs }}; do find ${TOOLCHAIN_DIR}/arm-webos-linux-gnueabi/sysroot/ -name $i -exec cp {} ./release/ \;; done
           mkdir -p ./release/tls
